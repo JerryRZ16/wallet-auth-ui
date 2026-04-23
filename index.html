@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钱包开通 - 法人实名认证</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #1D2129;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #4E5969;
+            margin-bottom: 48px;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        .demo-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        .demo-title {
+            padding: 16px 20px;
+            background-color: #f7f8fa;
+            border-bottom: 1px solid #e5e6eb;
+            font-weight: 600;
+            color: #4E5969;
+        }
+        .demo-frame {
+            width: 100%;
+            height: 812px;
+            border: none;
+        }
+        .info-box {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #1D2129;
+        }
+        ul {
+            line-height: 1.8;
+            color: #4E5969;
+        }
+        a {
+            color: #165DFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>钱包开通 - 法人实名认证</h1>
+    <p class="subtitle">新增短信认证方式，与支付宝扫码认证双选项并行</p>
+
+    <div class="demo-grid">
+        <div class="demo-card">
+            <div class="demo-title">1. 选择认证方式</div>
+            <iframe class="demo-frame" src="pages/index.html"></iframe>
+        </div>
+        <div class="demo-card">
+            <div class="demo-title">2. 短信认证等待</div>
+            <iframe class="demo-frame" src="pages/sms.html"></iframe>
+        </div>
+        <div class="demo-card">
+            <div class="demo-title">3. 链接过期提示</div>
+            <iframe class="demo-frame" src="pages/expired.html"></iframe>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <h3>项目说明</h3>
+        <ul>
+            <li>基于参考设计图还原，完全一致的交互流程和视觉风格</li>
+            <li>纯静态HTML + CSS + JavaScript实现，无需任何构建工具，直接打开即可预览</li>
+            <li>响应式适配，最大宽度480px，适配手机移动端</li>
+            <li>完整实现了倒计时、按钮禁用状态控制、表单验证等交互逻辑</li>
+            <li>遵循企业级设计规范，使用统一的设计Token（颜色、间距、字体、圆角）</li>
+        </ul>
+        <p style="margin-top: 16px; color: #4E5969;">直接点击下方卡片即可进入对应页面体验完整流程：</p>
+        <ul>
+            <li><a href="pages/index.html" target="_blank">选择认证方式页面</a></li>
+            <li><a href="pages/sms.html" target="_blank">短信认证等待页面</a></li>
+            <li><a href="pages/expired.html" target="_blank">链接过期页面</a></li>
+        </ul>
+    </div>
+</body>
+</html>
