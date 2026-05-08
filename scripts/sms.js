@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             refreshCount++;
             
-            // 第3次刷新模拟认证成功，第5次模拟链接过期
+            // 第3次刷新模拟认证成功，第2次模拟链接过期
             if (refreshCount === 3) {
                 // 认证成功，跳转到成功页面
                 window.location.href = 'success.html';
-            } else if (refreshCount >= 5 && !linkExpired) {
+            } else if (refreshCount >= 2 && !linkExpired) {
                 // 模拟链接过期
                 linkExpired = true;
                 expireInfo.innerHTML = '<span style="color: #F53F3F;">验证链接已过期</span>';
