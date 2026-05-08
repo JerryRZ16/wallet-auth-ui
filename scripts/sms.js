@@ -5,51 +5,55 @@ document.addEventListener('DOMContentLoaded', function() {
     const refreshBtn = document.getElementById('refreshBtn');
     const resendBtn = document.getElementById('resendBtn');
     const backToPrevious = document.getElementById('backToPrevious');
-    const countdownEl = document.getElementById('countdown');
+    const expireInfo = document.getElementById('expireInfo');
 
-    let countdown = 60;
-    let countdownTimer = null;
-
-    // 开始倒计时
-    function startCountdown() {
-        resendBtn.disabled = true;
-        countdown = 60;
-        
-        if (countdownTimer) {
-            clearInterval(countdownTimer);
-        }
-
-        countdownTimer = setInterval(() => {
-            countdown--;
-            countdownEl.textContent = `(${countdown}s)`;
-            
-            if (countdown <= 0) {
-                clearInterval(countdownTimer);
-                resendBtn.disabled = false;
-                countdownEl.textContent = '';
-                resendBtn.textContent = '重发短信';
-            }
-        }, 1000);
-    }
+    let linkExpired = false;
+    let refreshCount = 0;
 
     // 刷新状态 - 模拟轮询
     refreshBtn.addEventListener('click', function() {
-        // 这里模拟轮询认证结果，实际项目中会调用接口查询
         refreshBtn.innerHTML = `
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-spin">
-                <polyline points="23 4 23 10 17 10"/>
-                <polyline points="1 20 1 14 7 14"/>
+                <polyline points="23 4" 23 10" 17 10"/>
+                <polyline points="1 20" 1 14" 7 14"/>
                 <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
             </svg>
             刷新中...
         `;
         
         setTimeout(() => {
-            alert('当前认证仍在处理中，请稍后再试。实际环境中会根据接口返回结果跳转');
+            refreshCount++;
+            
+            // 第3次刷新模拟认证成功，第5次模拟链接过期
+            if (refreshCount === 3) {
+                // 认证成功，跳转到成功页面
+                window.location.href = 'success.html';
+            } else if (refreshCount >= 5 && !linkExpired) {
+                // 模拟链接过期
+                linkExpired = true;
+                expireInfo.innerHTML = '<span style="color: #F53F3F;">验证链接已过期</span>';
+                resendBtn.style.display = 'block';
+                
+                // 更新提示信息
+                const infoTip = document.querySelector('.info-tip');
+                infoTip.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F53F3F" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="16" x2="12" y2="12"/>
+                        <line x1="12" y1="8" x2="12.01" y2="8"/>
+                    </svg>
+                    <p style="color: #F53F3F;">验证链接已过期，请重新发送短信</p>
+                `;
+                infoTip.style.backgroundColor = '#FFF1F0';
+                infoTip.style.borderColor = '#FFCDC9';
+            } else {
+                alert('当前认证仍在处理中，请稍后再试。（点击刷新5次模拟链接过期，3次模拟认证成功）');
+            }
+            
             refreshBtn.innerHTML = `
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="23 4 23 10 17 10"/>
-                    <polyline points="1 20 1 14 7 14"/>
+                    <polyline points="23 4" 23 10" 17 10"/>
+                    <polyline points="1 20" 1 14" 7 14"/>
                     <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
                 </svg>
                 刷新状态
@@ -59,11 +63,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 重发短信
     resendBtn.addEventListener('click', function() {
-        if (!resendBtn.disabled) {
-            // 模拟调用重发接口
-            alert('短信已重新发送');
-            startCountdown();
-        }
+        // 模拟调用重发接口
+        alert('短信已重新发送，新的验证链接有效期3天');
+        linkExpired = false;
+        refreshCount = 0;
+        expireInfo.innerHTML = '验证链接有效期：3天';
+        resendBtn.style.display = 'none';
+        
+        // 恢复提示信息
+        const infoTip = document.querySelector('.info-tip');
+        infoTip.innerHTML = `
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <p>请负责人查收短信并完成认证，认证完成后可点击"刷新状态"更新页面</p>
+        `;
+        infoTip.style.backgroundColor = '';
+        infoTip.style.borderColor = '';
     });
 
     // 返回上一步
@@ -75,9 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     backBtn.addEventListener('click', function() {
         window.history.back();
     });
-
-    // 页面加载完成后开始倒计时
-    startCountdown();
 });
 
 // 添加旋转动画

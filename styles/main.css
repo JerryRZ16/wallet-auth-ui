@@ -528,6 +528,116 @@ body {
 }
 
 /* ============================================
+   开户成功页面样式
+   ============================================ */
+
+.success-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: var(--spacing-xl);
+}
+
+.success-icon-large {
+    width: 120px;
+    height: 120px;
+    margin-bottom: var(--spacing-xl);
+    background-color: var(--color-success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.success-icon-large svg {
+    width: 60px;
+    height: 60px;
+    stroke-width: 2.5;
+}
+
+.success-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.success-desc {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+}
+
+.success-info-card {
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    width: 100%;
+    text-align: left;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.info-value {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+}
+
+.next-steps {
+    text-align: left;
+    width: 100%;
+    margin-bottom: var(--spacing-xl);
+}
+
+.steps-title {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+}
+
+.steps-list li {
+    color: var(--color-text-secondary);
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+}
+
+.steps-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+}
+
+/* ============================================
    响应式适配
    ============================================ */
 
