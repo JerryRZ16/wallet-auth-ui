@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链接已过期</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部导航 -->
+        <header class="header">
+            <button class="back-btn" id="backBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <h1 class="header-title">链接已过期</h1>
+            <div class="header-placeholder"></div>
+        </header>
+
+        <!-- 内容区域 -->
+        <main class="content">
+            <div class="section expired-section">
+                <!-- 过期图标 -->
+                <div class="expired-icon">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </div>
+
+                <h2 class="expired-title">链接已过期</h2>
+                <p class="expired-desc">您访问的认证链接已过期，请重新发送短信获取新的认证链接</p>
+
+                <!-- 操作按钮 -->
+                <div class="action-buttons">
+                    <button class="primary-btn" id="resendBtn">重发短信</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('resendBtn').addEventListener('click', function() {
+                alert('短信已重新发送，请查收');
+                // 返回短信已发送页面
+                window.location.href = 'sms.html';
+            });
+
+            document.getElementById('backBtn').addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

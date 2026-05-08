@@ -37,33 +37,25 @@
                     +86 ****** 8888
                 </div>
 
-                <div class="expire-info">
+                <div class="expire-info" id="expireInfo">
                     验证链接有效期：3天
                 </div>
 
                 <!-- 操作按钮 -->
-                <div class="action-buttons">
-                    <button class="primary-btn" id="refreshBtn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="23 4 23 10 17 10"/>
-                            <polyline points="1 20 1 14 7 14"/>
-                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-                        </svg>
-                        刷新状态
-                    </button>
-                    <button class="outline-btn" id="resendBtn" style="display: none;">
-                        重发短信
-                    </button>
+                <div class="action-buttons" id="actionButtons">
+                    <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">
+                        请查收短信并完成认证，如未收到短信，<a href="#" id="resendLink" style="color: var(--color-primary); text-decoration: underline;">点击重发</a>
+                    </p>
                 </div>
 
                 <!-- 提示信息 -->
-                <div class="info-tip">
+                <div class="info-tip" id="infoTip">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/>
                         <line x1="12" y1="16" x2="12" y2="12"/>
                         <line x1="12" y1="8" x2="12.01" y2="8"/>
                     </svg>
-                    <p>请负责人查收短信并完成认证，认证完成后可点击"刷新状态"更新页面</p>
+                    <p>请负责人查收短信并完成认证</p>
                 </div>
             </div>
 
