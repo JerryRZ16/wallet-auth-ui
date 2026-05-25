@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const backBtn = document.getElementById('backBtn');
     const refreshBtn = document.getElementById('refreshBtn');
     const resendBtn = document.getElementById('resendBtn');
-    const backToPrevious = document.getElementById('backToPrevious');
     const expireInfo = document.getElementById('expireInfo');
 
     let linkExpired = false;
@@ -82,11 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         infoTip.style.backgroundColor = '';
         infoTip.style.borderColor = '';
-    });
-
-    // 返回上一步
-    backToPrevious.addEventListener('click', function() {
-        window.location.href = 'index.html';
     });
 
     // 返回按钮
